@@ -4,6 +4,7 @@ int main() {
   enableTermianlRaw();
 
   // first test
+  // second test
 
   while (1) {
     int key = readKey();
