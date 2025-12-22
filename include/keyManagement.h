@@ -6,8 +6,18 @@
 #include <termios.h>
 #include <unistd.h>
 
-void enableTermianlRaw();
+static struct termios orignalTerminal;
+
+typedef struct UserKeybinds {
+  char up;
+  char down;
+  char left;
+  char right;
+} UserKeybinds;
+
+void enableTerminalRaw();
 void disableTerminalRaw();
 int readKey();
+UserKeybinds setUserKeys();
 
 #endif

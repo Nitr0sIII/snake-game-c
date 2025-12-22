@@ -1,8 +1,6 @@
 #include "../include/keyManagement.h"
 
-static struct termios orignalTerminal;
-
-void enableTermianlRaw() {
+void enableTerminalRaw() {
   struct termios newTerminal;
 
   tcgetattr(STDIN_FILENO, &orignalTerminal); // get parameters of the terminal
@@ -25,4 +23,25 @@ int readKey() {
   if (read(STDIN_FILENO, &c, 1) == 1)
     return c;
   return -1;
+}
+
+UserKeybinds setUserKeys() {
+  // mettre des vérificaitons des scanfs
+  UserKeybinds newUserKeys;
+
+  printf("Keybinds : \n\n");
+
+  printf("UP : ");
+  scanf(" %c", &newUserKeys.up);
+
+  printf("\nDOWN : ");
+  scanf(" %c", &newUserKeys.down);
+
+  printf("\nLEFT : ");
+  scanf(" %c", &newUserKeys.left);
+
+  printf("\nRIGHT : ");
+  scanf(" %c", &newUserKeys.right);
+
+  return newUserKeys;
 }
