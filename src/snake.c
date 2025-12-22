@@ -3,6 +3,8 @@
 int main() {
   enableTermianlRaw();
 
+  // first test
+
   while (1) {
     int key = readKey();
 
