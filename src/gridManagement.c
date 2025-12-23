@@ -7,11 +7,11 @@ void spawnApple(char **grid, int size) {
     y = rand() % (size - 1);
   } while (cellAlreadyUsed(grid, size, x, y) != 1);
 
-  grid[x][y] = '&';
+  grid[y][x] = '&';
 }
 
 int cellAlreadyUsed(char **grid, int size, int x, int y) {
-  if (grid[x][y] != ' ') {
+  if (grid[y][x] != ' ') {
     return -1; // cell not empty
   }
   return 1; // cell empty
@@ -20,13 +20,13 @@ int cellAlreadyUsed(char **grid, int size, int x, int y) {
 char **initGrid(int size) {
   char **gameGrid = malloc(size * sizeof(char *));
 
-  for (int i = 0; i < size; i++) {
-    gameGrid[i] = malloc(size * sizeof(char));
-    for (int j = 0; j < size; j++) {
-      if (i == 0 || i == size - 1 || j == 0 || j == size - 1) {
-        gameGrid[i][j] = 'H';
+  for (int y = 0; y < size; y++) {
+    gameGrid[y] = malloc(size * sizeof(char));
+    for (int x = 0; x < size; x++) {
+      if (y == 0 || y == size - 1 || x == 0 || x == size - 1) {
+        gameGrid[y][x] = 'H';
       } else {
-        gameGrid[i][j] = ' ';
+        gameGrid[y][x] = ' ';
       }
     }
   }
@@ -36,10 +36,10 @@ char **initGrid(int size) {
 
 void printGrid(char **grid, int size) {
   printf("\n");
-  for (int i = 0; i < size; i++) {
-    for (int j = 0; j < size; j++) {
+  for (int y = 0; y < size; y++) {
+    for (int x = 0; x < size; x++) {
 
-      printf("[%c]", grid[i][j]);
+      printf(" %c ", grid[y][x]);
     }
     printf("\n");
   }

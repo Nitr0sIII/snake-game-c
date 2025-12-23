@@ -1,4 +1,5 @@
 all: snake.o keyManagement.o gridManagement.o movementManagement.o
+	
 	gcc -o snake snake.o keyManagement.o gridManagement.o movementManagement.o
 
 snake.o : ./src/snake.c 
@@ -14,3 +15,5 @@ movementManagement.o:
 	gcc -c ./src/movementManagement.c
 clean:
 	rm -f *.o snake
+
+#make clean & make & ./snake
