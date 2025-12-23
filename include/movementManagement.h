@@ -12,4 +12,6 @@ typedef struct Snake {
 
 void moveSnake(char **grid, Snake *snake, int gridSize, char key,
                UserKeybinds userKeys);
+
+int snakeReachedBorder(Snake snake, int gridSize);
 #endif

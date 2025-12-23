@@ -34,13 +34,13 @@ UserKeybinds setUserKeys() {
   printf("UP : ");
   scanf(" %c", &newUserKeys.up);
 
-  printf("\nDOWN : ");
+  printf("DOWN : ");
   scanf(" %c", &newUserKeys.down);
 
-  printf("\nLEFT : ");
+  printf("LEFT : ");
   scanf(" %c", &newUserKeys.left);
 
-  printf("\nRIGHT : ");
+  printf("RIGHT : ");
   scanf(" %c", &newUserKeys.right);
 
   return newUserKeys;

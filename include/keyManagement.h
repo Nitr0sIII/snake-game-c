@@ -1,6 +1,9 @@
 #ifndef KEY_MANAGEMENT_H
 #define KEY_MANAGEMENT_H
 
+#define EXIT_KEY 'p'
+#define NO_KEY_PRESSED -1
+
 #include <fcntl.h>
 #include <stdio.h>
 #include <termios.h>
