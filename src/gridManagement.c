@@ -12,9 +12,9 @@ void spawnApple(char **grid, int size) {
 
 int cellAlreadyUsed(char **grid, char key, int size, int x, int y) {
   if (grid[y][x] == key) {
-    return 1; // cell empty
+    return 1; // cell used by "key"
   }
-  return -1; // cell not empty
+  return -1; //  cell not used by "key"
 }
 
 char **initGrid(int size) {

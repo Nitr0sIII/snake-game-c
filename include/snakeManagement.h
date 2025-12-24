@@ -3,6 +3,8 @@
 
 #define BODY_MAX 100
 
+typedef enum { HIT = 0, NO_HIT } Colision;
+
 typedef struct Body {
   int x;
   int y;
@@ -13,6 +15,7 @@ typedef struct Snake {
   int y;
   float score;
   int bodyLength;
+  Colision hit;
   Body body[BODY_MAX];
 } Snake;
 

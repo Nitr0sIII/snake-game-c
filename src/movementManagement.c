@@ -20,6 +20,12 @@ void moveSnake(char **grid, Snake *snake, int gridSize, char key,
     snake->x++;
   }
 
+  if (cellAlreadyUsed(grid, SNAKE_BODY, gridSize, snake->x, snake->y) == 1 ||
+      cellAlreadyUsed(grid, BORDER_CELL, gridSize, snake->x, snake->y) == 1) {
+    // if border or himself touch : dead
+    snake->hit = HIT;
+  }
+
   if (snakeEatApple(grid, *snake) == 1) {
     // if snake will eat an apple
     snake->score += 5;
@@ -61,15 +67,6 @@ void moveSnake(char **grid, Snake *snake, int gridSize, char key,
   }
 
   grid[snake->y][snake->x] = SNAKE_HEAD; // set the snake's head
-}
-
-int snakeReachedBorder(Snake snake, int gridSize) {
-  if (snake.x == 0 || snake.x == gridSize - 1 || snake.y == 0 ||
-      snake.y == gridSize - 1) {
-    return 1; // border reached
-  }
-
-  return -1; // border not reached
 }
 
 void increaseBody(Snake *snake, char key, UserKeybinds userKeys) {

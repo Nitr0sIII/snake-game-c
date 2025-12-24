@@ -39,10 +39,10 @@ int main() {
       timeCounter = 0;
     }
 
-    fflush(stdout); // Console refresh immediate
+    fflush(stdout); // refresh immediately the console
 
-    if (snakeReachedBorder(userSnake, sizeGrid) == 1) {
-      printf("border reached!");
+    if (userSnake.hit == HIT) {
+      printf("HIT!");
       break;
     }
 
