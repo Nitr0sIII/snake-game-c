@@ -1,48 +1,43 @@
 #include "../include/gridManagement.h"
 #include "../include/movementManagement.h"
+#include "../include/snakeManagement.h"
 
 int main() {
   srand(time(NULL));
 
   int sizeGrid = 15;
-  int refreshTime = 250000; // 250ms
+  int refreshTime = 350000; // 350ms
   char **gameGrid = initGrid(sizeGrid);
   int timeCounter = 0;
+  int key = 0;
 
   char lastKey = '\0';
   UserKeybinds userKeys = setUserKeys();
-  Snake userSnake;
-  userSnake.x = 5;
-  userSnake.y = 5;
-  userSnake.bodyLength = 0;
-  userSnake.score = 0.0f;
+  Snake userSnake = initSnake();
 
-  printf("\033[2J\033[H");
-
+  printf("\033[2J\033[H"); // Clear screen and move cursor to top-left
   enableTerminalRaw();
 
   while (1) {
-    int key = readKey();
+    key = readKey();
 
     if (key != NO_KEY_PRESSED) {
       if (key == EXIT_KEY)
         break;
       lastKey = key;
       moveSnake(gameGrid, &userSnake, sizeGrid, key, userKeys);
-
     } else {
       moveSnake(gameGrid, &userSnake, sizeGrid, lastKey, userKeys);
     }
 
-    printf("\033[2J\033[H"); // Clear screen and move cursor to top-left
+    printf("\033[2J\033[H");
     printGrid(gameGrid, sizeGrid);
+    printSnakeInfo(userSnake);
 
-    if (timeCounter >= (8)) {
+    if (timeCounter >= (1)) {
       spawnApple(gameGrid, sizeGrid);
       timeCounter = 0;
     }
-
-    printSnakeInfo(userSnake);
 
     fflush(stdout); // Console refresh immediate
 
@@ -51,7 +46,7 @@ int main() {
       break;
     }
 
-    usleep(refreshTime); // 250 ms
+    usleep(refreshTime);
     timeCounter++;
   }
 

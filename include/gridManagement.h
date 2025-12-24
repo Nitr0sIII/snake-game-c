@@ -7,8 +7,14 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define SNAKE_HEAD 'o'
+#define SNAKE_BODY 'c'
+#define APPLE_CELL '&'
+#define BORDER_CELL 'H'
+#define EMPTY_CELL ' '
+
 void spawnApple(char **grid, int size);
-int cellAlreadyUsed(char **grid, int size, int x, int y);
+int cellAlreadyUsed(char **grid, char key, int size, int x, int y);
 char **initGrid(int size);
 void printGrid(char **grid, int size);
 void freeGrid(char **grid, int size);
