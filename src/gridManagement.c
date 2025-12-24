@@ -35,7 +35,7 @@ char **initGrid(int size) {
 }
 
 void printGrid(char **grid, int size) {
-  printf("\n");
+  printf("\n\n");
   for (int y = 0; y < size; y++) {
     for (int x = 0; x < size; x++) {
 

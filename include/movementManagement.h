@@ -8,20 +8,22 @@
 typedef struct Body {
   int x;
   int y;
+
 } Body;
 
 typedef struct Snake {
   int x;
   int y;
-  int lenght;
   float score;
+  int bodyLength;
   Body body[BODY_MAX];
 
 } Snake;
 
 void moveSnake(char **grid, Snake *snake, int gridSize, char key,
                UserKeybinds userKeys);
-
+void increaseBody(Snake *snake, char key, UserKeybinds userKeys, int oldY,
+                  int oldX);
 int snakeReachedBorder(Snake snake, int gridSize);
 int snakeEatApple(char **grid, Snake snake);
 void printSnakeInfo(Snake snake);

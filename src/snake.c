@@ -14,7 +14,7 @@ int main() {
   Snake userSnake;
   userSnake.x = 5;
   userSnake.y = 5;
-  userSnake.lenght = 0;
+  userSnake.bodyLength = 0;
   userSnake.score = 0.0f;
 
   printf("\033[2J\033[H");
