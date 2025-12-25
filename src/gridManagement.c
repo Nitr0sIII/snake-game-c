@@ -1,4 +1,5 @@
 #include "../include/gridManagement.h"
+#include "../include/colorConsole.h"
 
 void spawnApple(char **grid, int size) {
   int x, y;
@@ -38,8 +39,24 @@ void printGrid(char **grid, int size) {
   printf("\n\n");
   for (int y = 0; y < size; y++) {
     for (int x = 0; x < size; x++) {
-
-      printf(" %c", grid[y][x]);
+      char usedChar = grid[y][x];
+      switch (usedChar) {
+      case SNAKE_HEAD:
+        printf(GRN " %c" RESET, grid[y][x]);
+        break;
+      case SNAKE_BODY:
+        printf(GRN " %c" RESET, grid[y][x]);
+        break;
+      case APPLE_CELL:
+        printf(RED " %c" RESET, grid[y][x]);
+        break;
+      case BORDER_CELL:
+        printf(BLU " %c" RESET, grid[y][x]);
+        break;
+      default:
+        printf(" %c", grid[y][x]);
+        break;
+      }
     }
     printf("\n");
   }

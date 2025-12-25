@@ -110,6 +110,14 @@ int snakeEatApple(char **grid, Snake snake) {
   return -1; // snake will not eat an apple
 }
 
+int keyAmongUserBindings(char key, UserKeybinds bindings) {
+  if (key == bindings.up || key == bindings.down || key == bindings.left ||
+      key == bindings.right || key == EXIT_KEY) {
+    return 1; // key among the user keybindings
+  }
+  return -1;
+}
+
 void printSnakeInfo(Snake snake) {
   printf("\n\n");
 

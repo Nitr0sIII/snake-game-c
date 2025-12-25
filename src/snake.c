@@ -1,3 +1,4 @@
+#include "../include/colorConsole.h"
 #include "../include/gridManagement.h"
 #include "../include/movementManagement.h"
 #include "../include/snakeManagement.h"
@@ -6,8 +7,9 @@ int main() {
   srand(time(NULL));
 
   int sizeGrid = 15;
-  int refreshTime = 350000; // 350ms
   char **gameGrid = initGrid(sizeGrid);
+  int refreshTime = 350000; // 350ms
+
   int timeCounter = 0;
   int key = 0;
 
@@ -21,7 +23,7 @@ int main() {
   while (1) {
     key = readKey();
 
-    if (key != NO_KEY_PRESSED) {
+    if (keyAmongUserBindings(key, userKeys) == 1) {
       if (key == EXIT_KEY)
         break;
       lastKey = key;
@@ -34,7 +36,7 @@ int main() {
     printGrid(gameGrid, sizeGrid);
     printSnakeInfo(userSnake);
 
-    if (timeCounter >= (1)) {
+    if (timeCounter >= (8)) {
       spawnApple(gameGrid, sizeGrid);
       timeCounter = 0;
     }
@@ -42,7 +44,7 @@ int main() {
     fflush(stdout); // refresh immediately the console
 
     if (userSnake.hit == HIT) {
-      printf("HIT!");
+      printf(YEL "HIT!" RESET);
       break;
     }
 

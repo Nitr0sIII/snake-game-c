@@ -8,6 +8,7 @@ void moveSnake(char **grid, Snake *snake, int gridSize, char key,
                UserKeybinds userKeys);
 void increaseBody(Snake *snake, char key, UserKeybinds userKeys);
 int snakeEatApple(char **grid, Snake snake);
+int keyAmongUserBindings(char key, UserKeybinds bindings);
 void printSnakeInfo(Snake snake);
 
 #endif

@@ -7,10 +7,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define SNAKE_HEAD 'o'
-#define SNAKE_BODY 'c'
-#define APPLE_CELL '&'
-#define BORDER_CELL 'H'
+#define SNAKE_HEAD 'O'
+#define SNAKE_BODY 'o'
+#define APPLE_CELL '@'
+#define BORDER_CELL '#'
 #define EMPTY_CELL ' '
 
 void spawnApple(char **grid, int size);
