@@ -1,6 +1,7 @@
 #include "../include/colorConsole.h"
 #include "../include/gridManagement.h"
 #include "../include/movementManagement.h"
+#include "../include/saveLoadSystem.h"
 #include "../include/snakeManagement.h"
 
 int main() {
@@ -15,7 +16,7 @@ int main() {
 
   char lastKey = '\0';
   UserKeybinds userKeys = setUserKeys();
-  Snake userSnake = initSnake();
+  Snake userSnake = initSnake(SAVE_PATH);
 
   printf("\033[2J\033[H"); // Clear screen and move cursor to top-left
   enableTerminalRaw();
@@ -53,6 +54,8 @@ int main() {
   }
 
   disableTerminalRaw();
+  userSnake.bestScore = userSnake.score;
+  saveGame(SAVE_PATH, userSnake);
 
   freeGrid(gameGrid, sizeGrid);
   return 0;

@@ -1,5 +1,4 @@
 #include "../include/gridManagement.h"
-#include "../include/colorConsole.h"
 
 void spawnApple(char **grid, int size) {
   int x, y;

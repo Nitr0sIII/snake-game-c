@@ -1,5 +1,5 @@
-all: snake.o keyManagement.o gridManagement.o movementManagement.o snakeManagement.o
-	gcc -o snake snake.o keyManagement.o gridManagement.o movementManagement.o snakeManagement.o
+all: snake.o keyManagement.o gridManagement.o movementManagement.o snakeManagement.o saveLoadSystem.o
+	gcc -o snake snake.o keyManagement.o gridManagement.o movementManagement.o snakeManagement.o saveLoadSystem.o
 
 snake.o : ./src/snake.c 
 	gcc -c ./src/snake.c
@@ -15,6 +15,9 @@ movementManagement.o:
 
 snakeManagement.o:
 	gcc -c ./src/snakeManagement.c
+
+saveLoadSystem.o:
+	gcc -c ./src/saveLoadSystem.c
 
 clean:
 	rm -f *.o snake

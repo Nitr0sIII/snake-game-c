@@ -1,5 +1,5 @@
 #include "../include/movementManagement.h"
-#include "../include/gridManagement.h"
+
 
 void moveSnake(char **grid, Snake *snake, int gridSize, char key,
                UserKeybinds userKeys) {
@@ -121,9 +121,10 @@ int keyAmongUserBindings(char key, UserKeybinds bindings) {
 void printSnakeInfo(Snake snake) {
   printf("\n\n");
 
-  printf("Lenght : %d\n", snake.bodyLength);
-  printf("Score : %.2f\n", snake.score);
-  printf("[%d] - [%d]\n", snake.x, snake.y);
+  printf(YEL "Lenght : %d\n" RESET, snake.bodyLength);
+  printf(YEL "Score : %.1f\n" RESET, snake.score);
+  printf(YEL "[%d] - [%d]\n" RESET, snake.x, snake.y);
+  printf(MAG "Best Score : %.1f" RESET, snake.bestScore);
 
   /* for (int i = 0; i < snake.bodyLength; i++) {
      printf("[%d][%d] - ", snake.body[i].y, snake.body[i].x);

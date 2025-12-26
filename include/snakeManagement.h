@@ -14,11 +14,12 @@ typedef struct Snake {
   int x;
   int y;
   float score;
+  float bestScore;
   int bodyLength;
   Colision hit;
   Body body[BODY_MAX];
 } Snake;
 
-Snake initSnake();
+Snake initSnake(char *path);
 
 #endif

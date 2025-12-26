@@ -1,6 +1,7 @@
 #ifndef GRID_MANAGEMENT_H
 #define GRID_MANAGEMENT_H
 
+#include "../include/colorConsole.h"
 #include "../include/movementManagement.h"
 
 #include <stdio.h>

@@ -1,6 +1,8 @@
 #ifndef MOVE_MANAGEMENT_H
 #define MOVE_MANAGEMENT_H
 
+#include "../include/colorConsole.h"
+#include "../include/gridManagement.h"
 #include "../include/keyManagement.h"
 #include "../include/snakeManagement.h"
 
