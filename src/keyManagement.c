@@ -26,22 +26,47 @@ int readKey() {
 }
 
 UserKeybinds setUserKeys() {
-  // mettre des vérificaitons des scanfs
   UserKeybinds newUserKeys;
 
   printf("Keybinds : \n\n");
 
-  printf("UP : ");
-  scanf(" %c", &newUserKeys.up);
+  do {
+    printf("Binding for Up : ");
+    scanf(" %c", &newUserKeys.up);
+  } while (acceptedKey(newUserKeys.up) != 1);
 
-  printf("DOWN : ");
-  scanf(" %c", &newUserKeys.down);
+  do {
+    flush();
+    printf("\nBinding for Down : ");
+    scanf(" %c", &newUserKeys.down);
+  } while (acceptedKey(newUserKeys.down) != 1);
 
-  printf("LEFT : ");
-  scanf(" %c", &newUserKeys.left);
+  do {
+    flush();
+    printf("Binding for Left : ");
+    scanf(" %c", &newUserKeys.left);
+  } while (acceptedKey(newUserKeys.left) != 1);
 
-  printf("RIGHT : ");
-  scanf(" %c", &newUserKeys.right);
+  do {
+    flush();
+    printf("Binding for Right : ");
+    scanf(" %c", &newUserKeys.right);
+  } while (acceptedKey(newUserKeys.right) != 1);
 
   return newUserKeys;
+}
+
+int acceptedKey(char key) {
+  if ((key >= 'A' && key <= 'Z') || (key >= 'a' && key <= 'z')) {
+    return 1; // Key accepted
+  }
+
+  return -1;
+}
+
+void flush() {
+  int c;
+  do {
+    c = getchar();
+  } while (c != '\n' && c != EOF);
 }

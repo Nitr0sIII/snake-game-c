@@ -14,7 +14,7 @@ int cellAlreadyUsed(char **grid, char key, int size, int x, int y) {
   if (grid[y][x] == key) {
     return 1; // cell used by "key"
   }
-  return -1; //  cell not used by "key"
+  return -1; // cell not used by "key"
 }
 
 char **initGrid(int size) {
@@ -36,29 +36,54 @@ char **initGrid(int size) {
 
 void printGrid(char **grid, int size) {
   printf("\n\n");
+
+  // Top border
+  printf(CYN "  ╔");
+  for (int x = 1; x < size - 1; x++) {
+    printf("══");
+  }
+  printf("╗\n" RESET);
+
+  // Grid content
   for (int y = 0; y < size; y++) {
+    if (y == 0 || y == size - 1) {
+      continue;
+    }
+
+    printf(CYN "  ║" RESET);
     for (int x = 0; x < size; x++) {
+      if (x == 0 || x == size - 1) {
+        continue;
+      }
+
       char usedChar = grid[y][x];
       switch (usedChar) {
       case SNAKE_HEAD:
-        printf(GRN " %c" RESET, grid[y][x]);
+        printf(GRN " ●" RESET);
         break;
       case SNAKE_BODY:
-        printf(GRN " %c" RESET, grid[y][x]);
+        printf(GRN " ○" RESET);
         break;
       case APPLE_CELL:
         printf(RED " %c" RESET, grid[y][x]);
         break;
       case BORDER_CELL:
-        printf(BLU " %c" RESET, grid[y][x]);
+        printf(CYN " %c" RESET, grid[y][x]);
         break;
       default:
-        printf(" %c", grid[y][x]);
+        printf("  ");
         break;
       }
     }
-    printf("\n");
+    printf(CYN "║\n" RESET);
   }
+
+  // Bottom border
+  printf(CYN "  ╚");
+  for (int x = 1; x < size - 1; x++) {
+    printf("══");
+  }
+  printf("╝\n" RESET);
 }
 
 void freeGrid(char **grid, int size) {

@@ -22,5 +22,7 @@ void enableTerminalRaw();
 void disableTerminalRaw();
 int readKey();
 UserKeybinds setUserKeys();
+int acceptedKey(char key);
+void flush();
 
 #endif

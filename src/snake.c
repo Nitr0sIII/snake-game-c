@@ -19,6 +19,7 @@ int main() {
   Snake userSnake = initSnake(SAVE_PATH);
 
   printf("\033[2J\033[H"); // Clear screen and move cursor to top-left
+  printf("\n\n");
   enableTerminalRaw();
 
   while (1) {
@@ -45,7 +46,7 @@ int main() {
     fflush(stdout); // refresh immediately the console
 
     if (userSnake.hit == HIT) {
-      printf(YEL "HIT!" RESET);
+      printf(RED "HIT!" RESET);
       break;
     }
 
