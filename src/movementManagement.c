@@ -71,18 +71,18 @@ void moveSnake(char **grid, Snake *snake, int gridSize, char key,
 void increaseBody(Snake *snake, char key, UserKeybinds userKeys) {
   // add an other body to the snake with the opposite direction of the movement
 
-  if (snake->bodyLength <= 1) {
+  if (snake->bodyLength == 1) {
     if (key == userKeys.up) {
       snake->body[0].x = snake->x;
-      snake->body[0].y = snake->y--;
+      snake->body[0].y = snake->y - 1;
     } else if (key == userKeys.down) {
       snake->body[0].x = snake->x;
-      snake->body[0].y = snake->y++;
+      snake->body[0].y = snake->y + 1;
     } else if (key == userKeys.left) {
-      snake->body[0].x = snake->x++;
+      snake->body[0].x = snake->x + 1;
       snake->body[0].y = snake->y;
     } else if (key == userKeys.right) {
-      snake->body[0].x = snake->x--;
+      snake->body[0].x = snake->x - 1;
       snake->body[0].y = snake->y;
     }
   } else {
@@ -115,31 +115,4 @@ int keyAmongUserBindings(char key, UserKeybinds bindings) {
     return 1; // key among the user keybindings
   }
   return -1;
-}
-
-void printSnakeInfo(Snake snake) {
-  printf("\n\n");
-
-  printf(CYN "╔════════════════════════════════╗\n" RESET);
-  printf(CYN "║" RESET GRN "    🐍 SNAKE GAME STATISTICS    " RESET CYN
-             "║\n" RESET);
-  printf(CYN "╠════════════════════════════════╣\n" RESET);
-  printf(CYN "║" RESET YEL " 📏 Length   : " WHT "%-14d" RESET CYN
-             "   ║\n" RESET,
-         snake.bodyLength);
-  printf(CYN "║" RESET YEL " 🏆 Score    : " WHT "%-14.1f" RESET CYN
-             "   ║\n" RESET,
-         snake.score);
-  printf(CYN "║" RESET YEL " 📍 Position : " WHT "X:%-3d Y:%-5d" RESET CYN
-             "    ║\n" RESET,
-         snake.x, snake.y);
-  printf(CYN "║" RESET MAG " ⭐ Best     : " WHT "%-14.1f" RESET CYN
-             "   ║\n" RESET,
-         snake.bestScore);
-  printf(CYN "╚════════════════════════════════╝" RESET);
-
-  /* for (int i = 0; i < snake.bodyLength; i++) {
-     printf("[%d][%d] - ", snake.body[i].y, snake.body[i].x);
-   }
- */
 }

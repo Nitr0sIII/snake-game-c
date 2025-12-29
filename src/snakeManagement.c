@@ -23,3 +23,36 @@ Snake initSnake(char *path) {
 
   return newSnake;
 }
+
+void updateBestScore(Snake *snake) {
+  if (snake->score > snake->bestScore) {
+    snake->bestScore = snake->score;
+  }
+}
+
+void printSnakeInfo(Snake snake) {
+  printf("\n\n");
+
+  printf(CYN "╔════════════════════════════════╗\n" RESET);
+  printf(CYN "║" RESET GRN "    🐍 SNAKE GAME STATISTICS    " RESET CYN
+             "║\n" RESET);
+  printf(CYN "╠════════════════════════════════╣\n" RESET);
+  printf(CYN "║" RESET YEL " 📏 Length   : " WHT "%-14d" RESET CYN
+             "   ║\n" RESET,
+         snake.bodyLength);
+  printf(CYN "║" RESET YEL " 🏆 Score    : " WHT "%-14.1f" RESET CYN
+             "   ║\n" RESET,
+         snake.score);
+  printf(CYN "║" RESET YEL " 📍 Position : " WHT "X:%-3d Y:%-5d" RESET CYN
+             "    ║\n" RESET,
+         snake.x, snake.y);
+  printf(CYN "║" RESET MAG " ⭐ Best     : " WHT "%-14.1f" RESET CYN
+             "   ║\n" RESET,
+         snake.bestScore);
+  printf(CYN "╚════════════════════════════════╝" RESET);
+
+  /* for (int i = 0; i < snake.bodyLength; i++) {
+     printf("[%d][%d] - ", snake.body[i].y, snake.body[i].x);
+   }
+ */
+}

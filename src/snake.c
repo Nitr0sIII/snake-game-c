@@ -1,5 +1,6 @@
 #include "../include/colorConsole.h"
 #include "../include/gridManagement.h"
+#include "../include/loseMenu.h"
 #include "../include/movementManagement.h"
 #include "../include/saveLoadSystem.h"
 #include "../include/snakeManagement.h"
@@ -55,7 +56,12 @@ int main() {
   }
 
   disableTerminalRaw();
-  userSnake.bestScore = userSnake.score;
+
+  updateBestScore(&userSnake);
+
+  printf("\033[2J\033[H");
+  displayLoseMenu(userSnake);
+  fflush(stdout);
   saveGame(SAVE_PATH, userSnake);
 
   freeGrid(gameGrid, sizeGrid);

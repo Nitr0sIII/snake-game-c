@@ -1,6 +1,8 @@
 #ifndef SNAKE_MANAGEMENT_H
 #define SNAKE_MANAGEMENT_H
 
+#include "../include/colorConsole.h"
+
 #define BODY_MAX 100
 
 typedef enum { HIT = 0, NO_HIT } Colision;
@@ -21,5 +23,7 @@ typedef struct Snake {
 } Snake;
 
 Snake initSnake(char *path);
+void updateBestScore(Snake *snake);
+void printSnakeInfo(Snake snake);
 
 #endif
